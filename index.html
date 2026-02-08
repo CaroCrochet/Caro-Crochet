@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Caro Crochet</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header class="encabezado">
+    <img src="imagenes/Logo Caro Crochet.jpeg" alt="Crochet izquierdo" class="img-header">
+
+    <div class="texto-header">
+        <h1>✨🧶 Caro Crochet 🧶✨</h1>
+        <p><h1>✨🧶 Tejidos con amor 🧶✨</h1></p>
+    </div>
+
+    <img src="imagenes/Logo Caro Crochet.jpeg" alt="Crochet derecho" class="img-header">
+</header>
+
+    <section class="sobre">
+        <h2>Sobre mi </h2>
+        <p><strong>✨ Hecho a mano, lana por lana ✨</strong></p>
+<p>
+                ❤️ Creo Amigurumis y tejidos a crochet con amor✨ </p>
+            <p>✨Lo que quieras lo puedo hacer ❤️
+        </p>
+    </section>
+
+    <section class="productos">
+        <h2>Mis productos</h2>
+
+        <div class="contenedor-galeria">
+
+    <button class="flecha izquierda" id="flecha-izq" onclick="moverGaleria(-1)">❮</button>
+
+    <div class="galeria-scroll" id="galeria">
+
+        <div class="producto">
+    <img src="imagenes/Calcifer Amigurumi.jpeg" alt="Calcifer Amigurumi">
+    <h3>Calcifer Amigurumi</h3>
+
+    <a 
+      href="https://wa.me/50662903661?text=Hola%20buenas%20Me%20interesa%20el%20producto:%20Calcifer%20Amigurumi" 
+      target="_blank"
+      class="btn-producto">
+      💬 Pedir por WhatsApp
+    </a>
+</div>
+
+
+        <div class="producto">
+            <img src="imagenes/Tortuga florero.jpeg" alt="Tortuga Florero">
+            <h3>Tortuguitas Floreros</h3>
+            <a href="https://wa.me/50662903661?text=Hola%20buenas%20Me%20interesan%20las%20Tortuguitas%20Floreros"
+   target="_blank"
+   class="btn-producto">
+   💬 Pedir por WhatsApp
+</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/Cartera.jpeg" alt="Cartera">
+            <h3>Cartera</h3>
+            <a href="https://wa.me/50662903661?text=Hola%20buenas%20Me%20interesa%20la%20Cartera%20a%20Crochet"
+   target="_blank"
+   class="btn-producto">
+   💬 Pedir por WhatsApp
+</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/Honguito Mario.jpeg" alt="Honguito de Mario">
+            <h3>Honguito de Mario</h3>
+            <a href="https://wa.me/50662903661?text=Hola%20buenas%20Me%20interesa%20el%20Honguito%20de%20Mario"
+   target="_blank"
+   class="btn-producto">
+   💬 Pedir por WhatsApp
+</a>
+        </div>
+
+    </div>
+
+    <button class="flecha derecha" id="flecha=der" onclick="moverGaleria(1)">❯</button>
+
+</div>
+
+    </section>
+
+    <section class="contacto">
+        <h2>Contacto</h2>
+        <div class="botones-sociales">
+            <a href="https://wa.me/50662903661" target="_blank" class="btn whatsapp">
+                💬 WhatsApp
+            </a>
+
+            <a href="https://www.instagram.com/carocrochettejidosconamor" class="btn instagram">
+                📸 Instagram
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <footer>
+    <p>🧶 Gracias por apoyar el trabajo hecho a mano 💖</p>
+</footer>
+
+    </footer>
+    
+    <script>
+const galeria = document.getElementById("galeria");
+const flechaIzq = document.getElementById("flecha-izq");
+const flechaDer = document.getElementById("flecha-der");
+
+const anchoProducto = 260; // ajusta si cambias tamaños
+
+function moverGaleria(direccion) {
+    const maxScroll = galeria.scrollWidth - galeria.clientWidth;
+    const scrollActual = galeria.scrollLeft;
+    const movimiento = direccion * anchoProducto;
+
+    // Si intenta pasar el límite → rebote
+    if (
+        (direccion === -1 && scrollActual <= 0) ||
+        (direccion === 1 && scrollActual >= maxScroll)
+    ) {
+        galeria.animate(
+            [
+                { transform: "translateX(0)" },
+                { transform: `translateX(${direccion * -10}px)` },
+                { transform: "translateX(0)" }
+            ],
+            {
+                duration: 300,
+                easing: "ease-out"
+            }
+        );
+        return;
+    }
+
+    // Movimiento normal suave
+    galeria.scrollBy({
+        left: movimiento,
+        behavior: "smooth"
+    });
+}
+
+// Activar / desactivar flechas
+function actualizarFlechas() {
+    const maxScroll = galeria.scrollWidth - galeria.clientWidth;
+
+    flechaIzq.classList.toggle("desactivada", galeria.scrollLeft <= 0);
+    flechaDer.classList.toggle(
+        "desactivada",
+        galeria.scrollLeft >= maxScroll - 5
+    );
+}
+
+// Detecta scroll manual (mouse o dedo)
+galeria.addEventListener("scroll", actualizarFlechas);
+
+// Inicializa al cargar
+actualizarFlechas();
+</script>
+
+
+
+
+</body>
+</html>
