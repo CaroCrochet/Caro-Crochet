@@ -235,3 +235,27 @@ section {
     width: 18px;
     height: 18px;
 }
+
+@media (max-width: 768px) {
+    .encabezado {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .img-header {
+        width: 90px;
+    }
+
+    .texto-header h1 {
+        font-size: 30px;
+    }
+
+    .texto-header p {
+        font-size: 18px;
+    }
+}
+    img {
+    max-width: 100%;
+    height: auto;
+}
